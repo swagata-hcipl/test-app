@@ -1,6 +1,14 @@
 class Asset < ActiveRecord::Base
 	belongs_to :user
+	has_one :owner
 	#attr_accessible :user_id
+
+	has_attached_file :image_url, :styles => { :thumb => "100x100>" },
+                  :url  => "/assets/products/:id/:style/:basename.:extension",
+                  :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
+
+	validates_attachment_size :image_url, :less_than => 5.megabytes
+	validates_attachment_content_type :image_url, :content_type => ['image/jpeg', 'image/png']
 
 	validates :model_no, :presence => true
 	validates :serial_no, :presence => true

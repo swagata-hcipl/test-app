@@ -3,14 +3,12 @@
 <h1>New Asset</h1>
 <%= form_for(:asset, :url => {:controller => 'asset', :action => 'create'}) do |f| %>
 	<p> Name:</br> <%= f.text_field :name%> </p>
-	<p> Description:</br> <%= f.text_area :description, :rows => "5"%> </p>
+	<p> Description:</br> <%= f.text_area :description, :rows => "2", :columns => "2"%> </p>
 	<p> Type:</br> <%= f.select :type,  Asset::TYPE %>
 	<p> Location:</br> <%= f.text_field :location%></p>
 	<p> Owner:</br><%= f.text_field :owner%></p>
 	<% if session[:user_id]==1%>
 		<p> Assigned to:</br> <%=f.text_field :assigned_to%></p>
-	<%else%>
-		<p> Assigned to:</br> <%=f.text_field session[:user_id], :disabled => true%>
 	<%end%>
     <p> Status:</br> <%= f.select :type,  Asset::STATUS %>
     <p> Model No:</br><%= f.text_field :model_no%></p>
@@ -18,7 +16,13 @@
     <p> MAC Address:</br><%= f.text_field :mac_address%></p>
 	<p> Purchase Date:</br> <%= f.date_select :purchase_date, :start_year => Date.current.year, :end_year => 1920%> </p>
 	<p> Purchase Order:</br><%= f.text_field :purchase_order%></p>
-
+	<p> Image: </br><%= f.file_field :image_url%></p>
+	<p> Vendor: </br><%= f.text_field :vendor%></p>
+	<p> Cost: </br><%= f.text_field :cost%></p>
+	<p> AMC: </br><%= f.select :amc, Asset::AMC%></p>
+	<%if :amc == "y"%>
+		<p> AMC Amount: </br><%= f.text_field :amc_amount%></p>
+	<%end%>
 	
 	<%= f.submit :New %>
 <% end %>
@@ -29,9 +33,8 @@
 	<% end %>
 	</ul>
 <% end %>
-</div> 
- assigned_to, 
+</div>  
 
- vendor, cost, amc:yn, amc_amount, expiry_date, 
+ amc:yn, amc_amount, expiry_date, 
 
 status_date, warranty_type, image_url, IS_type, integrity:HML, Confidentiality:HML, note

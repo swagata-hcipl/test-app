@@ -17,7 +17,10 @@ before_filter :authenticate_user
     end
   end
 
-
+  def uploadFile
+    post = DataFile.save(params[:upload])
+    render :text => "File has been uploaded successfully"
+  end
 
   def view
   end

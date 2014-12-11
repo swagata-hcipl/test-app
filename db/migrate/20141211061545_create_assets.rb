@@ -19,7 +19,7 @@ class CreateAssets < ActiveRecord::Migration
       t.date :expiry_date
       t.date :status_date
       t.string :warranty_type
-      t.string :image_url
+      t.attachment :image_url
       t.string :IS_type
       t.string :integrity
       t.string :confidentiality
