@@ -1,2 +1,33 @@
-<h1>Session#home</h1>
-<p>Find me in app/views/session/home.html.erb</p>
+<% if session[:user_id]==1%>
+	<h2 class='User_Header'>Welcome, Admin</h2>
+<%else%>
+	<h2 class='User_Header'> Welcome, <%= @current_user.try(:name)%> </h2>
+<%end%> 
+<table>
+  <tr>
+     <th>ID &nbsp; &nbsp; &nbsp;</th> 
+    <th>Name</th>
+    <th>Type</th>
+    <th>Assigned to</th>
+    <th>Image</th>
+  </tr>
+
+   <%-# @patient_list.position.UUID.each do |UUID| %> 
+   <% if @assets!= nil %>
+   <% @assets.each do |asset| %>
+   <tr>
+	  <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
+    <td><%= asset.name %></td>
+    <td><%= asset.types %></td>
+    <td><%= asset.user %></td>
+    <td><%= asset.image_url %></td>
+    <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id} %>
+  </tr>
+  <% end %>
+
+  <% end %>
+
+</table>
+
+
+

@@ -30,7 +30,7 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+#gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'paperclip', '~> 4.2.1'
 
 # Use unicorn as the app server

@@ -1,0 +1,19 @@
+<% @page_title = "test-app | New Vendor" %>
+<div class="New Vendor">
+<h1>Create Vendor</h1>
+<%= form_for(:vendor, :url => {:controller => 'vendor', :action => 'create'}) do |f| %>
+<p> Name:</br> <%= f.text_field :name%> </p>
+<p> Manager:</br> <%= f.text_field :manager%> </p>
+<p> Address:</br> <%= f.text_area :address, :rows => "10" %>
+<p> Phone No:</br> <%= f.text_field :phone_no%> </p>
+<p> Other phone no:</br> <%= f.text_field :phone_no_other%></p>
+<%= f.submit :Register %>
+<% end %>
+<% if @vendor.errors.any? %>
+<ul class="Signup_Errors">
+<% for message_error in @vendor.errors.full_messages %>
+<li>* <%= message_error %></li>
+<% end %>
+</ul>
+<% end %>
+</div> 

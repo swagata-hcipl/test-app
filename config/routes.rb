@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :users
   resources :assests
@@ -11,6 +13,10 @@ Rails.application.routes.draw do
   get "active", :to => "session#active"
   get "inactive", :to => "session#inactive" 
   get "create_asset", :to => "asset#new"
+  get "create_vendor", :to => "vendor#new"
+  get "create_owner", :to => "owner#new"
+  get "create_employee", :to => "employee#new"
+
   get 'session/home'
 
   get 'session/login'
@@ -33,17 +39,35 @@ Rails.application.routes.draw do
   get 'user/new'
   post 'user/create'
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  get 'vendor/view'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get 'owner/view'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get 'owner/new'
+  post 'owner/create'
+
+  get 'owner/edit'
+  post 'owner/update'
+
+  get 'vendor/new'
+  post 'vendor/create'
+
+  get 'vendor/edit'
+  post 'vendor/update'
+
+  get 'employee/register'
+  post 'employee/create'
+
+  get 'employee/profile'
+
+  get 'employee/edit'
+  post 'employee/update'
+
+  get 'employee/delete'
+
+  
+
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

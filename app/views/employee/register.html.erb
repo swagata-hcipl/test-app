@@ -1,0 +1,17 @@
+<% @page_title = "test-app | Employee Register" %>
+<div class="New Employee">
+<h1>Create Employee</h1>
+<%= form_for(:employee, :url => {:controller => 'employee', :action => 'create'}) do |f| %>
+<p> Name:</br> <%= f.text_field :name%> </p>
+<p> Email:</br> <%= f.text_field :email%> </p>
+<p> Employee ID:</br> <%= f.text_field :employeeid%> </p>
+<%= f.submit :Register %>
+<% end %>
+<% if @employee.errors.any? %>
+<ul class="Signup_Errors">
+<% for message_error in @employee.errors.full_messages %>
+<li>* <%= message_error %></li>
+<% end %>
+</ul>
+<% end %>
+</div> 

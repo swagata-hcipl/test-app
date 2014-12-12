@@ -1,4 +1,7 @@
 class SessionController < ApplicationController
+  before_filter :authenticate_user, :only => [:home, :active, :inactive, :create_asset, :create_vendor, :create_owner]
+  before_filter :save_login_state, :only => [:login, :login_attempt]  
+  
   def login
   	 #Login Form
   end
@@ -8,7 +11,7 @@ class SessionController < ApplicationController
 	if authorized_user
 		session[:user_id] = authorized_user.id
 		flash[:notice] = "You logged in as #{authorized_user.name}"
-		render "home"
+		redirect_to(:action => "home")
 	else
 		flash[:notice] = "Invalid Employee ID or Password"
 		flash[:color]= "invalid"
@@ -17,7 +20,7 @@ class SessionController < ApplicationController
   end
 
   def home
-  	@assets = Asset.all
+    @assets = Asset.all
   end
 
   def active
@@ -26,9 +29,7 @@ class SessionController < ApplicationController
   def inactive
   end
 
-  before_filter :authenticate_user, :only => [:home, :profile, :setting]
-  before_filter :save_login_state, :only => [:login, :login_attempt]  
-  
+
   def logout
 		session[:user_id] = nil
 		redirect_to :action => 'login'

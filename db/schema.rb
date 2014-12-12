@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211124200) do
+ActiveRecord::Schema.define(version: 20141212123241) do
 
   create_table "assets", force: true do |t|
     t.string   "location"
     t.string   "name"
     t.text     "description"
-    t.string   "type"
-    t.string   "owner"
+    t.string   "types"
+    t.integer  "owner_id"
     t.string   "status"
     t.string   "model_no"
     t.string   "serial_no"
     t.string   "mac_address"
     t.date     "purchase_date"
     t.string   "purchase_order"
-    t.string   "vendor"
+    t.integer  "vendor_id"
     t.decimal  "cost",                   precision: 8, scale: 2
     t.string   "amc"
     t.decimal  "amc_amount",             precision: 8, scale: 2
@@ -41,7 +41,15 @@ ActiveRecord::Schema.define(version: 20141211124200) do
     t.string   "confidentiality"
     t.text     "note"
     t.integer  "user_id"
-    t.string   "assigned_to"
+    t.string   "activity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "employees", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "employeeid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

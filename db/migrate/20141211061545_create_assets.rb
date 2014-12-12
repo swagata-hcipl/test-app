@@ -4,15 +4,15 @@ class CreateAssets < ActiveRecord::Migration
       t.string :location
       t.string :name
       t.text :description
-      t.string :type
-      t.string :owner
+      t.string :types
+      t.references :owner
       t.string :status
       t.string :model_no
       t.string :serial_no
       t.string :mac_address
       t.date :purchase_date
       t.string :purchase_order
-      t.string :vendor
+      t.references :vendor
       t.decimal :cost, :precision => 8, :scale => 2
       t.string :amc
       t.decimal :amc_amount, :precision => 8, :scale => 2
@@ -24,8 +24,9 @@ class CreateAssets < ActiveRecord::Migration
       t.string :integrity
       t.string :confidentiality
       t.text :note
-      t.integer :user_id
-      t.string :assigned_to
+      #t.integer :user_id
+      t.references :employee
+      t.string :activity
 
       t.timestamps
     end

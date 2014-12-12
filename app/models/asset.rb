@@ -1,7 +1,7 @@
 class Asset < ActiveRecord::Base
 	belongs_to :user
 	has_one :owner
-	#attr_accessible :user_id
+	has_one :vendor
 
 	has_attached_file :image_url, :styles => { :thumb => "100x100>" },
                   :url  => "/assets/products/:id/:style/:basename.:extension",
@@ -14,12 +14,11 @@ class Asset < ActiveRecord::Base
 	validates :serial_no, :presence => true
 	validates_associated :user
 	#number_to_currency(cost, :unit => "Rs.")
-	AMC = ["Y","N"]
+	YN = ["Y","N"]
 	TYPE = ["Desktop", "Laptop", "monitor", "mouse", "keyboard", "headset", "mobile", "tablet", "printer", "router", "firewall", "switch", "software"]
 	STATUS = ["active", "spare", "faulty", "returned", "servicing", "inactive"]
 	WARRANTY = ["1 year", "2 years", "3 years", "4 years", "5 years", "perpetual"]
 	HML = ["H","M","L"]
-
 
 	#paginates_per 10
 end
