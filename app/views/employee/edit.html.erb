@@ -1,2 +1,10 @@
-<h1>Employee#edit</h1>
-<p>Find me in app/views/employee/edit.html.erb</p>
+<% @page_title = "test-app | Employee Edit" %>
+<div class="Employee_Edit">
+<h1>Employee Edit</h1>
+<%= form_for(:employee, :url => {:controller => 'employee', :action => 'update', :id => @employee}) do |f| %>
+<p> Name:</br> <%= f.text_field :name%> </p>
+<p> Email:</br> <%= f.text_field :email%> </p>
+<p> Employee ID:</br> <%= f.text_field :employeeid%> </p>
+<%= f.submit :Update %>
+<% end %>
+</div>

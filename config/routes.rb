@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   get "active", :to => "session#active"
   get "inactive", :to => "session#inactive" 
   get "create_asset", :to => "asset#new"
-  get "create_vendor", :to => "vendor#new"
-  get "create_owner", :to => "owner#new"
-  get "create_employee", :to => "employee#new"
+  get "show_vendor", :to => "vendor#show"
+  get "show_owner", :to => "owner#show"
+  get "show_employee", :to => "employee#show"
 
   get 'session/home'
 
@@ -40,9 +40,10 @@ Rails.application.routes.draw do
   post 'user/create'
 
 
-  get 'vendor/view'
-
-  get 'owner/view'
+  #get 'vendor/view'
+  get 'vendor/show'
+  get 'owner/show'
+  #get 'owner/view'
 
   get 'owner/new'
   post 'owner/create'
@@ -59,8 +60,8 @@ Rails.application.routes.draw do
   get 'employee/register'
   post 'employee/create'
 
-  get 'employee/profile'
-
+  # get 'employee/profile'
+  get 'employee/show'
   get 'employee/edit'
   post 'employee/update'
 

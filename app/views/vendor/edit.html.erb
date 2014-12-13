@@ -1,2 +1,12 @@
-<h1>Vendor#edit</h1>
-<p>Find me in app/views/vendor/edit.html.erb</p>
+<% @page_title = "test-app | Edit Vendor" %>
+<div class="Edit Vendor">
+<h1>Edit Vendor</h1>
+<%= form_for(:vendor, :url => {:controller => 'vendor', :action => 'update', :id => @vendor}) do |f| %>
+<p> Name:</br> <%= f.text_field :name%> </p>
+<p> Manager:</br> <%= f.text_field :manager%> </p>
+<p> Address:</br> <%= f.text_area :address, :rows => "10" %>
+<p> Phone No:</br> <%= f.text_field :phone_no%> </p>
+<p> Other phone no:</br> <%= f.text_field :phone_no_other%></p>
+<%= f.submit :Update %>
+<% end %>
+</div>

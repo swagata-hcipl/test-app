@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212123241) do
+ActiveRecord::Schema.define(version: 20141213071624) do
 
   create_table "assets", force: true do |t|
     t.string   "location"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(version: 20141212123241) do
     t.string   "client"
     t.string   "process"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "purchase_orders", force: true do |t|
+    t.string   "name"
+    t.string   "scan_file_name"
+    t.string   "scan_content_type"
+    t.integer  "scan_file_size"
+    t.datetime "scan_updated_at"
+    t.integer  "asset_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

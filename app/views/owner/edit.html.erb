@@ -1,2 +1,11 @@
-<h1>Owner#edit</h1>
-<p>Find me in app/views/owner/edit.html.erb</p>
+<% @page_title = "test-app | Owner Edit" %>
+<div class="Owner_Edit">
+<h1>Edit Owner</h1>
+<%= form_for(:owner, :url => {:controller => 'owner', :action => 'update', :id => @owner}) do |f| %>
+<p> Name:</br> <%= f.text_field :name%> </p>
+<p> Client:</br> <%= f.text_field :client%> </p>
+<p> Process:</br> <%= f.text_field :process%> </p>
+<%= f.submit :Update %>
+<% end %>
+<% end %>
+</div>

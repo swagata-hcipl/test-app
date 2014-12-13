@@ -18,7 +18,7 @@ class OwnerController < ApplicationController
       params.require(:owner).permit(:client, :process, :name)
   end
 
-  def view
+  def show
     @owners = Owner.all
   end
 
@@ -29,7 +29,7 @@ class OwnerController < ApplicationController
   def update
     @owner = Owner.find(params[:id])
     if @owner.update_attributes(owner_params)
-      redirect_to :action => 'view', :id => @owner
+      redirect_to :action => 'show', :id => @owner
     else
       render :action => 'edit'
     end

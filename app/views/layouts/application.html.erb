@@ -17,9 +17,9 @@
 <%else%>
 	<ul class="nav">
 		<li><%= link_to :Home , :home, class: "nav_links" %> </li>
-		<li><%= link_to :NewVendor , :create_vendor, class: "nav_links" %> </li>
-		<li><%= link_to :NewOwner , :create_owner, class: "nav_links" %> </li>
-		<li><%= link_to :NewEmployee , :create_employee, class: "nav_links" %> </li>	
+		<li><%= link_to :Vendor , :show_vendor, class: "nav_links" %> </li>
+		<li><%= link_to :Owner , :show_owner, class: "nav_links" %> </li>
+		<li><%= link_to :Employee , :show_employee, class: "nav_links" %> </li>	
 		<li><%= link_to :Active , :active, class: "nav_links" %> </li>
 		<li><%= link_to :Inactive , :inactive, class: "nav_links" %> </li>
 		<li><%= link_to :NewAsset , :create_asset, class: "nav_links" %> </li>

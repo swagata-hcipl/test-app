@@ -18,8 +18,8 @@ class EmployeeController < ApplicationController
       params.require(:employee).permit(:name, :email, :employeeid)
   end
 
-  def profile
-  	@employees = Employee.all
+  def show
+    @employees = Employee.all
   end
 
   def edit
@@ -29,7 +29,7 @@ class EmployeeController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
     if @employee.update_attributes(employee_params)
-      redirect_to :action => 'profile', :id => @employee
+      redirect_to :action => 'show', :id => @employee
     else
       render :action => 'edit'
     end

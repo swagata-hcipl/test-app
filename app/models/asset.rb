@@ -2,6 +2,7 @@ class Asset < ActiveRecord::Base
 	belongs_to :user
 	has_one :owner
 	has_one :vendor
+	has_one :purchase_order
 
 	has_attached_file :image_url, :styles => { :thumb => "100x100>" },
                   :url  => "/assets/products/:id/:style/:basename.:extension",

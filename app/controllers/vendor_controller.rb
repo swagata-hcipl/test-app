@@ -18,7 +18,8 @@ class VendorController < ApplicationController
       params.require(:vendor).permit(:name, :manager, :address, :phone_no, :phone_no_other)
   end
 
-  def view
+
+  def show
     @vendors = Vendor.all
   end
 
@@ -29,7 +30,7 @@ class VendorController < ApplicationController
   def update
     @vendor = Vendor.find(params[:id])
     if @vendor.update_attributes(vendor_params)
-      redirect_to :action => 'view', :id => @vendor
+      redirect_to :action => 'show', :id => @vendor
     else
       render :action => 'edit'
     end

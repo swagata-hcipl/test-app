@@ -1,8 +1,6 @@
-<% if session[:user_id]==1%>
-	<h2 class='User_Header'>Welcome, Admin</h2>
-<%else%>
-	<h2 class='User_Header'> Welcome, <%= @current_user.try(:name)%> </h2>
-<%end%> 
+	
+  <h2 class='User_Header'> Welcome, <%= @current_user.try(:name)%> </h2>
+
 <table>
   <tr>
      <th>ID &nbsp; &nbsp; &nbsp;</th> 

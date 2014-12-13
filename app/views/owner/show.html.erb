@@ -1,0 +1,22 @@
+<%=link_to('Create a new Owner profile',{:controller => 'owner', :action => 'new'}) %>
+<table>
+  <tr>
+     <th>ID &nbsp; &nbsp; &nbsp;</th> 
+    <th>Name</th>
+    <th>Client</th>
+    <th>Process</th>
+  </tr>
+   <% if @owners!= nil %>
+   <% @owners.each do |owner| %>
+   <tr>
+	  <td><%= owner.id%></td>
+    <td><%= owner.name %></td>
+    <td><%= owner.client %></td>
+    <td><%= owner.process %></td>
+    <td><%= link_to 'Edit', {:controller => 'owner', :action => 'edit', :id => owner.id} %>
+  </tr>
+  <% end %>
+
+  <% end %>
+
+</table>

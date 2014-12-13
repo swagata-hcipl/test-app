@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  belongs_to :employee
 	has_many :assests
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
