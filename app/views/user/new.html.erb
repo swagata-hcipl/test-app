@@ -1,7 +1,7 @@
 <% @page_title = "TestApp | Signup" %>
 <div class="Sign_Form">
 <h1>Sign Up</h1>
-<%= form_for(:user, :url => {:controller => 'user', :action => 'create'}) do |f| %>
+<%= form_for(:user||:employee, :url => {:controller => 'user', :action => 'create'}) do |f| %>
 <p> Name:</br> <%= f.text_field :name%> </p>
 <p> Email:</br> <%= f.text_field :email%> </p>
 <p> Password:</br> <%= f.password_field :password%></p>
