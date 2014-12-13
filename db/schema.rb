@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(version: 20141213071624) do
     t.string   "serial_no"
     t.string   "mac_address"
     t.date     "purchase_date"
-    t.string   "purchase_order"
+    t.string   "scan_file_name"
+    t.string   "scan_content_type"
+    t.integer  "scan_file_size"
+    t.datetime "scan_updated_at"
     t.integer  "vendor_id"
     t.decimal  "cost",                   precision: 8, scale: 2
     t.string   "amc"

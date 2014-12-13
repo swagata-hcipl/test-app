@@ -11,7 +11,7 @@ class CreateAssets < ActiveRecord::Migration
       t.string :serial_no
       t.string :mac_address
       t.date :purchase_date
-      t.string :purchase_order
+      t.attachment :scan
       t.references :vendor
       t.decimal :cost, :precision => 8, :scale => 2
       t.string :amc
