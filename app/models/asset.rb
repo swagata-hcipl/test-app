@@ -12,13 +12,15 @@ class Asset < ActiveRecord::Base
 	validates_attachment_size :image_url, :less_than => 5.megabytes
 	validates_attachment_content_type :image_url, :content_type => ['image/jpeg', 'image/png']
 
-	has_attached_file :scan, :styles => { :small => "160x160>" }
+	has_attached_file :scan, :styles => { :small => "160x160>" },
+	                  :url  => "/assets/products/:id/:style/:basename.:extension",
+                  	  :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
 	validates_attachment_content_type :scan, :content_type => ['image/jpeg', 'image/png']
 
 
 	validates :model_no, :presence => true
 	validates :serial_no, :presence => true
-	validates_associated :user
+	validates_associated :employee
 	#number_to_currency(cost, :unit => "Rs.")
 	YN = ["Y","N"]
 	TYPE = ["Desktop", "Laptop", "monitor", "mouse", "keyboard", "headset", "mobile", "tablet", "printer", "router", "firewall", "switch", "software"]

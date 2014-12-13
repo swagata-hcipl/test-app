@@ -21,7 +21,7 @@ before_filter :authenticate_user
   def asset_params
     params.require(:asset).permit(:location, :name, :description, :types, :owner, :status, :model_no, :serial_no, :mac_address,
     :purchase_date, :scan, :vendor, :cost, :amc, :amc_amount, :expiry_date, :status_date, :warranty_type, :image_url,
-    :IS_type, :integrity, :confidentiality, :note, :user_id, :assigned_to, :activity)
+    :IS_type, :integrity, :confidentiality, :note, :employee, :assigned_to, :activity)
   end
 
   def purchase_params

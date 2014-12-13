@@ -15,6 +15,7 @@ class CreateAssets < ActiveRecord::Migration
       t.references :vendor
       t.decimal :cost, :precision => 8, :scale => 2
       t.string :amc
+      t.references :employee
       t.decimal :amc_amount, :precision => 8, :scale => 2
       t.date :expiry_date
       t.date :status_date

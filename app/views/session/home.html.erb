@@ -17,7 +17,7 @@
 	  <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
     <td><%= asset.name %></td>
     <td><%= asset.types %></td>
-    <td><%= asset.user %></td>
+    <td><%= asset.employee %></td>
     <td><%= image_tag asset.image_url %></td>
     <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id} %>
   </tr>

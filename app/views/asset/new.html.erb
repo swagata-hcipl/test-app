@@ -7,7 +7,7 @@
 	<p> Type:</br> <%= f.select :types,  Asset::TYPE %>
 	<p> Location:</br> <%= f.text_field :location%></p>
 	<p> Owner:</br><%= f.collection_select :owner_id, Owner.all, :id, :name %></p>
-	<p> Assigned to:</br> <%=f.collection_select :user_id, Employee.all, :id, :name, {:selected =>"@current_user.name"}%></p>
+	<p> Assigned to:</br> <%=f.collection_select :employee, Employee.all, :id, :name%></p>
     <p> Status:</br> <%= f.select :status,  Asset::STATUS %></p>
     <p> Model No:</br><%= f.text_field :model_no%></p>
     <p> Serial No:</br><%= f.text_field :serial_no%></p>

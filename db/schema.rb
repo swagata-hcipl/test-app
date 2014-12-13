@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141213071624) do
     t.integer  "vendor_id"
     t.decimal  "cost",                   precision: 8, scale: 2
     t.string   "amc"
+    t.integer  "employee_id"
     t.decimal  "amc_amount",             precision: 8, scale: 2
     t.date     "expiry_date"
     t.date     "status_date"
@@ -43,7 +44,6 @@ ActiveRecord::Schema.define(version: 20141213071624) do
     t.string   "integrity"
     t.string   "confidentiality"
     t.text     "note"
-    t.integer  "employee_id"
     t.string   "activity"
     t.datetime "created_at"
     t.datetime "updated_at"
