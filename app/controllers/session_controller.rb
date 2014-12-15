@@ -20,13 +20,16 @@ class SessionController < ApplicationController
   end
 
   def home
-    @assets = Asset.all
+    @assets = Asset.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    #@asset_paginate = Asset.paginate(:page => params[:page], :per_page => 30)
   end
 
   def active
+    @assets =Asset.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
   end
 
   def inactive
+    @assets = Asset.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
   end
 
 

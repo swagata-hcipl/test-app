@@ -40,10 +40,10 @@ Rails.application.routes.draw do
   post 'user/create'
 
 
-  #get 'vendor/view'
+  get 'vendor/view'
   get 'vendor/show'
   get 'owner/show'
-  #get 'owner/view'
+  get 'owner/view'
 
   get 'owner/new'
   post 'owner/create'
@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   get 'employee/register'
   post 'employee/create'
 
-  # get 'employee/profile'
+  get 'employee/profile'
   get 'employee/show'
   get 'employee/edit'
   post 'employee/update'

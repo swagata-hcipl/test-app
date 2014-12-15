@@ -10,14 +10,14 @@
     <th>Image</th>
   </tr>
 
-   <%-# @patient_list.position.UUID.each do |UUID| %> 
+   
    <% if @assets!= nil %>
    <% @assets.each do |asset| %>
    <tr>
 	  <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
     <td><%= asset.name %></td>
     <td><%= asset.types %></td>
-    <td><%= asset.employee %></td>
+    <td><%= link_to asset.employee_id,:controller => "employee", :action => "profile", :id =>asset.employee_id -%></td>
     <td><%= image_tag asset.image_url %></td>
     <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id} %>
   </tr>

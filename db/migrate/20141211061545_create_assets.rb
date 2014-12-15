@@ -25,8 +25,7 @@ class CreateAssets < ActiveRecord::Migration
       t.string :integrity
       t.string :confidentiality
       t.text :note
-      #t.integer :user_id
-      t.references :employee
+      t.references :purchasr_order
       t.string :activity
 
       t.timestamps

@@ -1,2 +1,31 @@
-<h1>Asset#view</h1>
-<p>Find me in app/views/asset/view.html.erb</p>
+<% @page_title = "test-app | Asset Profile" %>
+<h1>Asset Profile</h1>
+<p>
+	<strong>Name: </strong><%= @asset.name %></br>
+	<strong>Description: </strong><%= @asset.description %></br>
+	<strong>Type: </strong><%= @asset.types %></br>
+	<strong>Location: </strong><%= @asset.location %></br>
+	<strong>Owner: </strong><%= link_to @asset.owner_id,:controller => "owner", :action => "view", :id => @asset.owner_id -%><br/>
+	<strong>Employee: </strong><%= link_to @asset.employee_id,:controller => "employee", :action => "profile", :id => @asset.employee_id -%></br>
+	<strong>Status: </strong><%= @asset.status %></br>
+	<strong>Model No: </strong><%= @asset.model_no %></br>
+	<strong>Serial No: </strong><%= @asset.serial_no %></br>
+	<strong>MAC Address: </strong><%= @asset.mac_address %></br>
+	<strong>Purchase date: </strong><%= @asset.purchase_date %></br>
+	<strong>Purchase Order:</strong><%= image_tag @asset.scan %></br>
+	<strong>Image: </strong><%= image_tag @asset.image_url %></br>
+	<strong>Vendor: </strong><%= link_to @asset.vendor_id, :controller => "vendor", :action => "view", :id => @asset.vendor_id -%></br>
+	<strong>Cost: </strong><%= @asset.cost %></br>
+	<strong>AMC: </strong><%= @asset.amc %></br>
+	<strong>AMC Amount: </strong><%= @asset.amc_amount %></br>
+	<strong>Expiry Date: </strong><%= @asset.expiry_date %></br>
+	<strong>Warranty Type: </strong><%= @asset.warranty_type %></br>
+	<strong>IS Type: </strong><%= @asset.IS_type %></br>
+	<strong>Integrity: </strong><%= @asset.integrity %></br>
+	<strong>Confidentiality: </strong><%= @asset.confidentiality %></br>
+	<strong>Note: </strong><%= @asset.note %></br>
+	<strong>Active? </strong><%= @asset.activity %></br>
+</p>
+
+
+	

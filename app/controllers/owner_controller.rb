@@ -22,6 +22,10 @@ class OwnerController < ApplicationController
     @owners = Owner.all
   end
 
+  def view
+    @owner = Owner.find(params[:id])
+  end
+
   def edit
     @owner = Owner.find(params[:id])
   end
@@ -29,7 +33,7 @@ class OwnerController < ApplicationController
   def update
     @owner = Owner.find(params[:id])
     if @owner.update_attributes(owner_params)
-      redirect_to :action => 'show', :id => @owner
+      redirect_to :action => 'show'
     else
       render :action => 'edit'
     end

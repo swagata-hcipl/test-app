@@ -33,6 +33,16 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 #gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'paperclip', '~> 4.2.1'
 
+
+group :assets do
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
+end
+
+gem 'will_paginate', '3.0.pre2'
+
+
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

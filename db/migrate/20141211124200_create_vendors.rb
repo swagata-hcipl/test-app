@@ -6,6 +6,7 @@ class CreateVendors < ActiveRecord::Migration
       t.string :address
       t.string :phone_no
       t.string :phone_no_other
+      t.references :asset
 
       t.timestamps
     end

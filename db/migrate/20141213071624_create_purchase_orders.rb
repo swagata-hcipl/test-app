@@ -3,7 +3,7 @@ class CreatePurchaseOrders < ActiveRecord::Migration
     create_table :purchase_orders do |t|
     	t.string :name
     	t.attachment :scan
-    	t.references :asset_id
+    	t.references :asset
 
       t.timestamps
     end

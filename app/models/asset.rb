@@ -3,7 +3,7 @@ class Asset < ActiveRecord::Base
 	has_one :owner
 	has_one :vendor
 	has_one :purchase_order
-	attr_accessor :scan_file_name, :scan_content_type
+	#attr_accessor :scan_file_name, :scan_content_type
 
 	has_attached_file :image_url, :styles => { :thumb => "100x100>" },
                   :url  => "/assets/products/:id/:style/:basename.:extension",

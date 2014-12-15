@@ -19,9 +19,9 @@ before_filter :authenticate_user
   end
 
   def asset_params
-    params.require(:asset).permit(:location, :name, :description, :types, :owner, :status, :model_no, :serial_no, :mac_address,
-    :purchase_date, :scan, :vendor, :cost, :amc, :amc_amount, :expiry_date, :status_date, :warranty_type, :image_url,
-    :IS_type, :integrity, :confidentiality, :note, :employee, :assigned_to, :activity)
+    params.require(:asset).permit(:location, :name, :description, :types, :owner_id, :status, :model_no, :serial_no, :mac_address,
+    :purchase_date, :scan, :vendor_id, :cost, :amc, :amc_amount, :expiry_date, :status_date, :warranty_type, :image_url,
+    :IS_type, :integrity, :confidentiality, :note, :employee_id, :assigned_to, :activity, :purchase_order_id)
   end
 
   def purchase_params
@@ -34,7 +34,7 @@ before_filter :authenticate_user
   end
 
   def view
-    @assets = Asset.all
+    @asset = Asset.find(params[:id])
     @purchase_order = PurchaseOrder.all
   end
 

@@ -23,6 +23,10 @@ class VendorController < ApplicationController
     @vendors = Vendor.all
   end
 
+  def view
+    @vendor = Vendor.find(params[:id])
+  end
+
   def edit
     @vendor = Vendor.find(params[:id])
   end

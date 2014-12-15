@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20141213071624) do
     t.string   "name"
     t.string   "email"
     t.string   "employeeid"
+    t.integer  "asset_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 20141213071624) do
     t.string   "client"
     t.string   "process"
     t.string   "name"
+    t.integer  "asset_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71,7 +73,7 @@ ActiveRecord::Schema.define(version: 20141213071624) do
     t.string   "scan_content_type"
     t.integer  "scan_file_size"
     t.datetime "scan_updated_at"
-    t.integer  "asset_id_id"
+    t.integer  "asset_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -93,6 +95,7 @@ ActiveRecord::Schema.define(version: 20141213071624) do
     t.string   "address"
     t.string   "phone_no"
     t.string   "phone_no_other"
+    t.integer  "asset_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
