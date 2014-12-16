@@ -34,12 +34,11 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'paperclip', '~> 4.2.1'
 
 
-group :assets do
-  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
-  gem 'jquery-ui-rails'
-end
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-ui-rails'
 
-gem 'will_paginate', '3.0.pre2'
+
+gem 'will_paginate'
 
 
 

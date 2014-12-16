@@ -8,7 +8,7 @@ class EmployeeController < ApplicationController
 	  if @employee.save
 		  flash[:notice] = "New employee created"
 		  flash[:color]= "valid"
-		  redirect_to root_path
+		  redirect_to show_employee_path
 	  else
 		  render "register"
     end
@@ -39,6 +39,10 @@ class EmployeeController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @employee = Employee.find(params[:id])
+    @employee.destroy
+    flash[:notice] = "Successfully deleted employee."
+    redirect_to show_employee_path
   end
 end

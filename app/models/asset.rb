@@ -28,5 +28,16 @@ class Asset < ActiveRecord::Base
 	WARRANTY = ["1 year", "2 years", "3 years", "4 years", "5 years", "perpetual"]
 	HML = ["H","M","L"]
 
+
+	def self.search(search)
+	  if search
+	    where('name LIKE ?', "%#{search}%")
+	  else
+	    all
+	  end
+	end
+
+
+
 	#paginates_per 10
 end

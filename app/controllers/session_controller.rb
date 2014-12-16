@@ -1,6 +1,7 @@
 class SessionController < ApplicationController
   before_filter :authenticate_user, :only => [:home, :active, :inactive, :create_asset, :create_vendor, :create_owner]
-  before_filter :save_login_state, :only => [:login, :login_attempt]  
+  before_filter :save_login_state, :only => [:login, :login_attempt]
+  helper_method :sort_column, :sort_direction  
   
   def login
   	 #Login Form
@@ -20,7 +21,7 @@ class SessionController < ApplicationController
   end
 
   def home
-    @assets = Asset.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    @assets = Asset.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
     #@asset_paginate = Asset.paginate(:page => params[:page], :per_page => 30)
   end
 
@@ -36,6 +37,14 @@ class SessionController < ApplicationController
   def logout
 		session[:user_id] = nil
 		redirect_to :action => 'login'
+  end
+
+  private
+  def sort_column
+    Asset.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end

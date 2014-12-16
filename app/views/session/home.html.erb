@@ -1,31 +1,43 @@
 	
   <h2 class='User_Header'> Welcome, <%= @current_user.try(:name)%> </h2>
 
+
+<%= form_tag session_home_path, :method => 'get' do %>
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  
+<% end %>
+
 <table>
-  <tr>
-     <th>ID &nbsp; &nbsp; &nbsp;</th> 
-    <th>Name</th>
-    <th>Type</th>
-    <th>Assigned to</th>
-    <th>Image</th>
-  </tr>
+  <thead>  
+    <tr>
+      <th><%= sortable "id", "ID" %></th> 
+      <th><%= sortable "name" ,"Name"%></th>
+      <th><%= sortable "types", "Type"%></th>
+      <th><%= sortable "employee_id", "Assigned To"%></th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% if @assets!= nil %>
+     <% @assets.each do |asset| %>
+    <tr>
+  	  <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
+      <td><%= asset.name %></td>
+      <td><%= asset.types %></td>
+      <td><%= link_to asset.employee.name,:controller => "employee", :action => "profile", :id =>asset.employee_id -%></td>
+      <td><%= image_tag asset.image_url %></td>
+      <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id} %>
+    </tr>
+    <% end %>
 
-   
-   <% if @assets!= nil %>
-   <% @assets.each do |asset| %>
-   <tr>
-	  <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
-    <td><%= asset.name %></td>
-    <td><%= asset.types %></td>
-    <td><%= link_to asset.employee_id,:controller => "employee", :action => "profile", :id =>asset.employee_id -%></td>
-    <td><%= image_tag asset.image_url %></td>
-    <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id} %>
-  </tr>
-  <% end %>
-
-  <% end %>
-
+    <% end %>
+  </tbody>  
 </table>
-
+<%=will_paginate @assets %>
 
 

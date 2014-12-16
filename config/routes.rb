@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :users
   resources :assests
+  resources :employee
 
   root "session#login"
   get "signup", :to => "user#new"

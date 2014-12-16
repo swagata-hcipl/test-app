@@ -13,7 +13,8 @@
     <td><%= employee.name %></td>
     <td><%= employee.email %></td>
     <td><%= employee.employeeid %></td>
-    <td><%= link_to 'Edit', {:controller => 'employee', :action => 'edit', :id => employee.id} %>
+    <td><%= link_to 'Edit', {:controller => 'employee', :action => 'edit', :id => employee.id} %></td>
+    <td><%=  link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>
 

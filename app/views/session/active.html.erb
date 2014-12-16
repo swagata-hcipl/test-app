@@ -1,27 +1,39 @@
-<table id="example" class="cell-border" width="100%" cellspacing="0">
-  <tr>
-     <th>ID &nbsp; &nbsp; &nbsp;</th> 
-    <th>Name</th>
-    <th>Type</th>
-    <th>Assigned to</th>
-    <th>Image</th>
-  </tr>
+<%= form_tag session_home_path, :method => 'get' do %>
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  
+<% end %>
 
-   <%-# @patient_list.position.UUID.each do |UUID| %> 
-   <% if @assets!= nil %>
-   <% @assets.each do |asset| %>
-   <% if asset.activity == "Y" %>
-   <tr>
-	  <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
-    <td><%= asset.name %></td>
-    <td><%= asset.types %></td>
-    <td><%= asset.employee %></td>
-    <td><%= image_tag asset.image_url %></td>
-    <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id} %>
-  </tr>
-  <% end %>
-  <% end %>
+<table>
+  <thead>  
+    <tr>
+      <th><%= sortable "id", "ID" %></th> 
+      <th><%= sortable "name" ,"Name"%></th>
+      <th><%= sortable "types", "Type"%></th>
+      <th><%= sortable "employee_id", "Assigned To"%></th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+     <% if @assets!= nil %>
+     <% @assets.each do |asset| %>
+     <% if asset.activity == "Y" %>
+    <tr>
+      <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
+      <td><%= asset.name %></td>
+      <td><%= asset.types %></td>
+      <td><%= link_to asset.employee_id,:controller => "employee", :action => "profile", :id =>asset.employee_id -%></td>
+      <td><%= image_tag asset.image_url %></td>
+      <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id} %>
+    </tr>
+    <% end %>
+    <%end%>
 
-  <% end %>
-
+    <% end %>
+  </tbody>  
 </table>
+<%=will_paginate @assets %>
