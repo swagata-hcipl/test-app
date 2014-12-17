@@ -1,6 +1,6 @@
 class Asset < ActiveRecord::Base
 	belongs_to :employee
-	has_one :owner
+	belongs_to :owner
 	has_one :vendor
 	has_one :purchase_order
 	#attr_accessor :scan_file_name, :scan_content_type
@@ -38,6 +38,14 @@ class Asset < ActiveRecord::Base
 	end
 
 
+	def self.to_csv(options = {})
+	  CSV.generate(options) do |csv|
+	    csv << column_names
+	    all.each do |asset|
+	      csv << asset.attributes.values_at(*column_names)
+	    end
+	  end
+	end
 
 	#paginates_per 10
 end

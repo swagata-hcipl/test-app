@@ -8,7 +8,7 @@ class EmployeeController < ApplicationController
 	  if @employee.save
 		  flash[:notice] = "New employee created"
 		  flash[:color]= "valid"
-		  redirect_to show_employee_path
+		  redirect_to :action => 'show'
 	  else
 		  render "register"
     end
@@ -33,7 +33,7 @@ class EmployeeController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
     if @employee.update_attributes(employee_params)
-      redirect_to :action => 'show', :id => @employee
+      redirect_to :action => 'profile', :id => @employee
     else
       render :action => 'edit'
     end
@@ -43,6 +43,6 @@ class EmployeeController < ApplicationController
     @employee = Employee.find(params[:id])
     @employee.destroy
     flash[:notice] = "Successfully deleted employee."
-    redirect_to show_employee_path
+    redirect_to :action => 'show'
   end
 end

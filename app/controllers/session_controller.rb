@@ -22,7 +22,11 @@ class SessionController < ApplicationController
 
   def home
     @assets = Asset.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
-    #@asset_paginate = Asset.paginate(:page => params[:page], :per_page => 30)
+    respond_to do |format|
+    format.html
+    format.csv { send_data @assets.to_csv }
+    format.xls # { send_data @assets.to_csv(col_sep: "\t") }
+  end
   end
 
   def active

@@ -8,7 +8,7 @@
   
 <% end %>
 
-<table>
+<table class="table">
   <thead>  
     <tr>
       <th><%= sortable "id", "ID" %></th> 
@@ -16,24 +16,39 @@
       <th><%= sortable "types", "Type"%></th>
       <th><%= sortable "employee_id", "Assigned To"%></th>
       <th>Image</th>
+      <th><%= sortable "owner_id", "Owner"%></th>
+      <th><%= sortable "status", "Status"%></th>
+      
     </tr>
   </thead>
   <tbody>
      <% if @assets!= nil %>
      <% @assets.each do |asset| %>
-     <% if asset.activity == "Y" %>
-    <tr>
+     <% if asset.is_active == true %>
+<tr>
       <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
       <td><%= asset.name %></td>
       <td><%= asset.types %></td>
-      <td><%= link_to asset.employee_id,:controller => "employee", :action => "profile", :id =>asset.employee_id -%></td>
+      <td><%= link_to asset.employee.name,:controller => "employee", :action => "profile", :id =>asset.employee_id -%></td>
       <td><%= image_tag asset.image_url %></td>
-      <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id} %>
+      <td><%= link_to_if asset.owner_id?, asset.owner_id,:controller => "owner", :action => "view", :id =>asset.owner_id -%></td>
+      <td><%= asset.status %></td>
+      <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id}, :class => "btn btn-warning" %></td><td>
+      <%if asset.is_active?%>
+        <%= link_to 'Deactivate', {:controller => 'asset', :action => 'deactivate', :id => asset.id}, :class => "btn btn-danger" %>
+      <%else%>
+        <%= link_to 'Activate', {:controller => 'asset', :action => 'activate', :id => asset.id}, :class => "btn btn-success" %>
+      <%end%></td>
     </tr>
     <% end %>
-    <%end%>
+    <% end %>
 
     <% end %>
   </tbody>  
 </table>
+<p>
+  Download:
+  <%= link_to "CSV", session_home_path(format: "csv") %> |
+  <%= link_to "Excel", session_home_path(format: "xls") %>
+</p>
 <%=will_paginate @assets %>

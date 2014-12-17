@@ -1,21 +1,22 @@
 <%=link_to('Create a new employee profile',{:controller => 'employee', :action => 'register'}) %>
-<table>
+<table class="table">
   <tr>
+    <thead>
      <th>ID &nbsp; &nbsp; &nbsp;</th> 
     <th>Name</th>
     <th>Email</th>
     <th>Employee ID</th>
-  </tr>
+  </tr></thead>
    <% if @employees!= nil %>
    <% @employees.each do |employee| %>
-   <tr>
+   <tr><tbody>
 	  <td><%= employee.id%></td>
     <td><%= employee.name %></td>
     <td><%= employee.email %></td>
     <td><%= employee.employeeid %></td>
     <td><%= link_to 'Edit', {:controller => 'employee', :action => 'edit', :id => employee.id} %></td>
-    <td><%=  link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <td><%=  link_to 'Destroy',{:action => 'destroy', :id => employee.id}, data: { confirm: 'Are you sure?' } %></td>
+  </tr></tbody>
   <% end %>
 
   <% end %>

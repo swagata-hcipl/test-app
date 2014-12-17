@@ -2,9 +2,7 @@ Rails.application.routes.draw do
 
 
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :users
-  resources :assests
-  resources :employee
+
 
   root "session#login"
   get "signup", :to => "user#new"
@@ -17,6 +15,7 @@ Rails.application.routes.draw do
   get "show_vendor", :to => "vendor#show"
   get "show_owner", :to => "owner#show"
   get "show_employee", :to => "employee#show"
+
 
   get 'session/home'
 
@@ -66,10 +65,10 @@ Rails.application.routes.draw do
   get 'employee/edit'
   post 'employee/update'
 
-  get 'employee/delete'
-
-  
-
+  get 'employee/destroy'
+  get 'asset/deactivate/:id', :controller => 'asset', :action => 'deactivate'
+  get 'asset/activate'
+  #post 'asset/update'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

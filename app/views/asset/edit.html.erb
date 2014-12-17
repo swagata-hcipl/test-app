@@ -25,7 +25,7 @@
 	<p> Integrity: </br><%= f.select :integrity, Asset::HML, :include_blank => true %></p>
 	<p> Confidentiality: </br><%= f.select :confidentiality, Asset::HML, :include_blank => true %></p>
 	<p> Notes: </br><%= f.text_area :note, :rows => "10", :cols =>"100"%></p>
-	<p> Active? </br><%= f.select :activity, Asset::YN%></p>
+	<p> Active? </br><%= f.check_box :is_active, {}, true, false%></p>
 	<%= f.submit :Update %>
 <% end %>
 </div>

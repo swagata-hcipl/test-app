@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 20141213071624) do
     t.string   "integrity"
     t.string   "confidentiality"
     t.text     "note"
-    t.string   "activity"
+    t.integer  "purchasr_order_id"
+    t.boolean  "is_active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

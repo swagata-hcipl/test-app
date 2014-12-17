@@ -10,20 +10,20 @@
 <div class="Main_Header">
 <h1>Test App</h1>
 <%unless session[:user_id]%>
-	<ul class="nav">
-	<li><%= link_to :Signup , :signup, class: "nav_links"%></li>|
-	<li><%= link_to :Login , :login, class: "nav_links"%></li>
+	<ul class="nav"><br/>
+	<%= link_to :Signup , :signup, class: "nav_links"%>|
+	<%= link_to :Login , :login, class: "nav_links"%>
 	</ul>
 <%else%>
-	<ul class="nav">
-		<li><%= link_to :Home , :home, class: "nav_links" %> </li>
-		<li><%= link_to :Vendor , :show_vendor, class: "nav_links" %> </li>
-		<li><%= link_to :Owner , :show_owner, class: "nav_links" %> </li>
-		<li><%= link_to :Employee , :show_employee, class: "nav_links" %> </li>	
-		<li><%= link_to :Active , :active, class: "nav_links" %> </li>
-		<li><%= link_to :Inactive , :inactive, class: "nav_links" %> </li>
-		<li><%= link_to :NewAsset , :create_asset, class: "nav_links" %> </li>
-		<li><%= link_to :Logout , :logout, class: "nav_links" %></li>
+	<ul class="nav"></br>
+		<%= link_to :Home , :home, class: "nav_links" %>| 
+		<%= link_to :Vendor , :show_vendor, class: "nav_links" %>| 
+		<%= link_to :Owner , :show_owner, class: "nav_links" %> |
+		<%= link_to :Employee , :show_employee, class: "nav_links" %>| 	
+		<%= link_to :Active , :active, class: "nav_links" %> |
+		<%= link_to :Inactive , :inactive, class: "nav_links" %> |
+		<%= link_to :NewAsset , :create_asset, class: "nav_links" %> |
+		<%= link_to :Logout , :logout, class: "nav_links" %>
 	</ul>
 <%end%>
 </div>

@@ -26,8 +26,7 @@ class CreateAssets < ActiveRecord::Migration
       t.string :confidentiality
       t.text :note
       t.references :purchasr_order
-      t.string :activity
-
+      t.boolean :is_active
       t.timestamps
     end
   end

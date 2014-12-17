@@ -5,7 +5,7 @@ class CreateOwners < ActiveRecord::Migration
       t.string :process
       t.string :name
       t.references :asset
-
+      
       t.timestamps
     end
   end
