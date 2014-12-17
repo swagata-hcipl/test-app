@@ -69,4 +69,16 @@ before_filter :authenticate_user
   end
  end
 
+ def search
+  @assets = Asset.filter(params.slice(:status, :owner_id, :types, :employee_id))
+ end
+
+  private
+  def sort_column
+    Asset.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end

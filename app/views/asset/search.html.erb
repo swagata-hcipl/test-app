@@ -1,7 +1,3 @@
-	
-  <h2 class='User_Header'> Welcome, <%= @current_user.try(:name)%> </h2>
-
-
 <%= form_tag session_home_path, :method => 'get' do %>
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
@@ -11,32 +7,25 @@
   </p>
   
 <% end %>
-<%= form_for(:asset, :url => {:controller => 'asset', :action => 'search'}) do |f| %>
-Status:<%= f.select :status,  Asset::STATUS, :include_blank => true  %>
-Owner:<%= f.collection_select :owner_id, Owner.all, :id, :name, :include_blank => true %>
-Assigned to: <%=f.select :employee_id, Employee.all.collect {|e| [ e.name, e.id ]}, :include_blank => true %>
-Type: <%= f.select :types,  Asset::TYPE , :include_blank => true %>
-<%= f.submit :Search %>
-<% end %>
 
-<table class="table table-striped">
+<table class="table">
   <thead>  
     <tr>
-      <th><%= sortable "id", "ID" %></th> 
-      <th><%= sortable "name" ,"Name"%></th>
-      <th><%= sortable "types", "Type"%></th>
-      <th><%= sortable "employee_id", "Assigned To"%></th>
+      <th>ID</th> 
+      <th>Name</th>
+      <th>Type</th>
+      <th>Assigned to</th>
       <th>Image</th>
-      <th><%= sortable "owner_id", "Owner"%></th>
-      <th><%= sortable "status", "Status"%></th>
+      <th>Owner</th>
+      <th>Status</th>
       
     </tr>
   </thead>
   <tbody>
      <% if @assets!= nil %>
      <% @assets.each do |asset| %>
-    <tr>
-  	  <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
+<tr>
+      <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
       <td><%= asset.name %></td>
       <td><%= asset.types %></td>
       <td><%= link_to asset.employee.name,:controller => "employee", :action => "profile", :id =>asset.employee_id -%></td>
@@ -60,11 +49,4 @@ Type: <%= f.select :types,  Asset::TYPE , :include_blank => true %>
   <%= link_to "CSV", session_home_path(format: "csv") %> |
   <%= link_to "Excel", session_home_path(format: "xls") %>
 </p>
-<%=will_paginate @assets %>
-
-
-
-
-
-
 
