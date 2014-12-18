@@ -43,6 +43,8 @@ gem "iconv", "~> 1.0.3"
 
 gem 'will_paginate'
 
+gem "byebug"
+
 
 
 # Use unicorn as the app server

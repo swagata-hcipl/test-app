@@ -11,7 +11,7 @@
   </p>
   
 <% end %>
-<%= form_for(:asset, :url => {:controller => 'asset', :action => 'search'}) do |f| %>
+<%= form_for :asset, :url => {:controller => 'asset', :action => 'search'} do |f| %>
 Status:<%= f.select :status,  Asset::STATUS, :include_blank => true  %>
 Owner:<%= f.collection_select :owner_id, Owner.all, :id, :name, :include_blank => true %>
 Assigned to: <%=f.select :employee_id, Employee.all.collect {|e| [ e.name, e.id ]}, :include_blank => true %>

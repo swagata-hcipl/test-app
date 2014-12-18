@@ -3,10 +3,11 @@ class Asset < ActiveRecord::Base
 	belongs_to :owner
 	has_one :vendor
 	has_one :purchase_order
-	include Filterable
 
 	#attr_accessor :scan_file_name, :scan_content_type
 
+	validates_presence_of :model_no
+	validates :serial_no, :presence => true
 	has_attached_file :image_url, :styles => { :thumb => "100x100>" },
                   :url  => "/assets/products/:id/:style/:basename.:extension",
                   :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
@@ -20,8 +21,6 @@ class Asset < ActiveRecord::Base
 	validates_attachment_content_type :scan, :content_type => ['image/jpeg', 'image/png']
 
 
-	validates :model_no, :presence => true
-	validates :serial_no, :presence => true
 	validates_associated :employee
 	#number_to_currency(cost, :unit => "Rs.")
 	YN = ["Y","N"]
@@ -29,6 +28,12 @@ class Asset < ActiveRecord::Base
 	STATUS = ["active", "spare", "faulty", "returned", "servicing", "inactive"]
 	WARRANTY = ["1 year", "2 years", "3 years", "4 years", "5 years", "perpetual"]
 	HML = ["H","M","L"]
+
+	scope :status, -> (status) { where status: status }
+	scope :owner_id, -> (owner_id) { where owner_id: owner_id }
+	scope :employee_id, -> (employee_id) { where employee_id: employee_id }
+	scope :types, -> (types) { where types: types }
+
 
 
 	def self.search(search)

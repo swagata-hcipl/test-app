@@ -14,7 +14,9 @@ before_filter :authenticate_user
 		  flash[:color]= "valid"
 		  redirect_to root_path
 	  else
-		  render "new"
+	   flash[:notice] = "Parameters not put"
+      flash[:color]= "invalid"
+  	  render "new"
     end
   end
 
@@ -70,7 +72,12 @@ before_filter :authenticate_user
  end
 
  def search
-  @assets = Asset.filter(params.slice(:status, :owner_id, :types, :employee_id))
+  @assets = Asset.where(nil) # creates an anonymous scope
+  @assets = @assets.status(params[:asset][:status]) if params[:asset][:status].present?
+  @assets = @assets.owner_id(params[:asset][:owner_id]) if params[:asset][:owner_id].present?
+  @assets = @assets.types(params[:asset][:types]) if params[:asset][:types].present?
+  @assets = @assets.employee_id(params[:asset][:employee_id]) if params[:asset][:employee_id].present?
+  render "search"
  end
 
   private

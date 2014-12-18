@@ -1,36 +1,36 @@
 <% @page_title = "test-app | New Asset" %>
-<form role="form-horizontal" role="form">
-<div class="form-group">
+<form>
+<div>
 <h1>New Asset</h1>
 <%= form_for(:asset||:purchase_order, :url => {:controller => 'asset', :action => 'create'}) do |f| %>
-	<p> Name: <%= f.text_field :name%> </p>
-	<p> Description: <%= f.text_area :description, :rows => "2", :cols => "100"%> </p>
-	<p> Type: <%= f.select :types,  Asset::TYPE %>
-	<p> Location: <%= f.text_field :location%></p>
-	<p> Owner:<%= f.collection_select :owner_id, Owner.all, :id, :name, :include_blank => true %></p>
-	<p> Assigned to: <%=f.select :employee_id, Employee.all.collect {|e| [ e.name, e.id ]}%></p>
-    <p> Status: <%= f.select :status,  Asset::STATUS %></p>
-    <p> Model No:<%= f.text_field :model_no%></p>
-    <p> Serial No:<%= f.text_field :serial_no%></p>
-    <p> MAC Address:<%= f.text_field :mac_address%></p>
-	<p> Purchase Date: <%= f.date_select :purchase_date, :start_year => Date.current.year, :end_year => 1920,:include_blank => true%> </p>
-	<p> Purchase Order:<%= f.file_field :scan%></p>
-	<p> Image: <%= f.file_field :image_url%></p>
-	<p> Vendor: <%= f.select :vendor_id, Vendor.all.collect {|v| [ v.name, v.id ] }, :include_blank => true%></p>
-	<p> Cost: <%= f.text_field :cost%></p>
-	<p> AMC: <%= f.select :amc, Asset::YN%></p>
-	<p> AMC Amount: <%= f.text_field :amc_amount%></p>
-	<p> Expiry Date: <%= f.date_select :expiry_date,:include_blank => true%></p>
-	<p> Warranty Type: <%= f.select :warranty_type, Asset::WARRANTY , :include_blank => true%></p>
-	<p> IS Type: <%= f.text_field :IS_type%></p>	
-	<p> Integrity: <%= f.select :integrity, Asset::HML, :include_blank => true %></p>
-	<p> Confidentiality: <%= f.select :confidentiality, Asset::HML, :include_blank => true %></p>
-	<p> Notes: <%= f.text_area :note, :rows => "10", :cols =>"100"%></p>
-	<p> Active? <%= f.check_box :is_active, {}, true, false%></p>
+	<p> Name: </br><%= f.text_field :name%> </p>
+	<p> Description: </br><%= f.text_area :description, :rows => "2", :cols => "100"%> </p>
+	<p> Type: </br><%= f.select :types,  Asset::TYPE %>
+	<p> Location: </br><%= f.text_field :location%></p>
+	<p> Owner:</br><%= f.collection_select :owner_id, Owner.all, :id, :name, :include_blank => true %></p>
+	<p> Assigned to: </br><%=f.select :employee_id, Employee.all.collect {|e| [ e.name, e.id ]}%></p>
+    <p> Status: </br><%= f.select :status,  Asset::STATUS %></p>
+    <p> Model No:</br><%= f.text_field :model_no%></p>
+    <p> Serial No:</br><%= f.text_field :serial_no%></p>
+    <p> MAC Address:</br><%= f.text_field :mac_address%></p>
+	<p> Purchase Date: </br><%= f.date_select :purchase_date, :start_year => Date.current.year, :end_year => 1920,:include_blank => true%> </p>
+	<p> Purchase Order:</br><%= f.file_field :scan%></p>
+	<p> Image: </br><%= f.file_field :image_url%></p>
+	<p> Vendor: </br><%= f.select :vendor_id, Vendor.all.collect {|v| [ v.name, v.id ] }, :include_blank => true%></p>
+	<p> Cost: </br><%= f.text_field :cost%></p>
+	<p> AMC: </br><%= f.select :amc, Asset::YN%></p>
+	<p> AMC Amount: </br><%= f.text_field :amc_amount%></p>
+	<p> Expiry Date: </br><%= f.date_select :expiry_date,:include_blank => true%></p>
+	<p> Warranty Type: </br><%= f.select :warranty_type, Asset::WARRANTY , :include_blank => true%></p>
+	<p> IS Type: </br><%= f.text_field :IS_type%></p>	
+	<p> Integrity: </br><%= f.select :integrity, Asset::HML, :include_blank => true %></p>
+	<p> Confidentiality: </br><%= f.select :confidentiality, Asset::HML, :include_blank => true %></p>
+	<p> Notes: </br><%= f.text_area :note, :rows => "10", :cols =>"100"%></p>
+	<p> Active? </br><%= f.check_box :is_active, {}, true, false%></p>
 	<%= f.submit :Create %>
 <% end %>
 <% if @asset.errors.any? %>
-	<ul class="Signup_Errors">
+	<ul class="Errors">
 	<% for message_error in @asset.errors.full_messages %>
 		<li>* <%= message_error %></li>
 	<% end %>

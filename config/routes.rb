@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
 
   get 'session/home'
-
+  post 'asset/search'
   get 'session/login'
   post 'session/login_attempt'
 
@@ -68,7 +68,7 @@ Rails.application.routes.draw do
   get 'employee/destroy'
   get 'asset/deactivate/:id', :controller => 'asset', :action => 'deactivate'
   get 'asset/activate'
-  post 'asset/search'
+
   #post 'asset/update'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
