@@ -9,7 +9,7 @@ before_filter :authenticate_user
   def create
 	  @asset = Asset.new(asset_params)
     @purchase_order = PurchaseOrder.new(purchase_params)
-	  if @asset.save && @purchase_order.save
+	  if @asset.save&&@purchase_order.save
 		  flash[:notice] = "New asset created"
 		  flash[:color]= "valid"
 		  redirect_to root_path

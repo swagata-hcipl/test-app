@@ -1,4 +1,4 @@
-<%=link_to('Create a new Owner profile',{:controller => 'owner', :action => 'new'}) %>
+<!--<%=link_to('Create a new Owner profile',{:controller => 'owner', :action => 'new'}) %>-->
 <table class="table">
   <tr>
      <th>ID &nbsp; &nbsp; &nbsp;</th> 
@@ -13,7 +13,7 @@
     <td><%= owner.name %></td>
     <td><%= owner.client %></td>
     <td><%= owner.process %></td>
-    <td><%= link_to 'Edit', {:controller => 'owner', :action => 'edit', :id => owner.id} %>
+    <td><%= link_to 'Edit', {:controller => 'owner', :action => 'edit', :id => owner.id}, :class => "btn btn-warning" %>
   </tr>
   <% end %>
 

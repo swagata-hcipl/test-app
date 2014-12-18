@@ -1,4 +1,4 @@
-<%=link_to('Create a new employee profile',{:controller => 'employee', :action => 'register'}) %>
+<%=link_to 'New Employee',{:controller => 'employee', :action => 'register'}, :class => "btn btn-primary" %>
 <table class="table">
   <tr>
     <thead>
@@ -14,8 +14,8 @@
     <td><%= employee.name %></td>
     <td><%= employee.email %></td>
     <td><%= employee.employeeid %></td>
-    <td><%= link_to 'Edit', {:controller => 'employee', :action => 'edit', :id => employee.id} %></td>
-    <td><%=  link_to 'Destroy',{:action => 'destroy', :id => employee.id}, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', {:controller => 'employee', :action => 'edit', :id => employee.id}, :class => "btn btn-warning" %></td>
+    <!-- <td><%=  link_to 'Destroy',{:action => 'destroy', :id => employee.id}, data: { confirm: 'Are you sure?' } %></td> -->
   </tr></tbody>
   <% end %>
 

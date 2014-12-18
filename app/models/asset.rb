@@ -21,7 +21,7 @@ class Asset < ActiveRecord::Base
 	validates_attachment_content_type :scan, :content_type => ['image/jpeg', 'image/png']
 
 
-	validates_associated :employee
+	#validates_associated :employee
 	#number_to_currency(cost, :unit => "Rs.")
 	YN = ["Y","N"]
 	TYPE = ["Desktop", "Laptop", "monitor", "mouse", "keyboard", "headset", "mobile", "tablet", "printer", "router", "firewall", "switch", "software"]

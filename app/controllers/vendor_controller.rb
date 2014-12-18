@@ -8,7 +8,7 @@ class VendorController < ApplicationController
 	  if @vendor.save
 		  flash[:notice] = "New vendor created"
 		  flash[:color]= "valid"
-		  redirect_to root_path
+		  redirect_to :controller => 'vendor', :action => 'show'
 	  else
 		  render "new"
     end

@@ -1,11 +1,13 @@
 class EmployeeController < ApplicationController
   def register
  	  @employee = Employee.new
+    @owner = Owner.new
   end
 
   def create
 	  @employee = Employee.new(employee_params)
-	  if @employee.save
+    @owner = Owner.new(owner_params)
+	  if @employee.save&&@owner.save
 		  flash[:notice] = "New employee created"
 		  flash[:color]= "valid"
 		  redirect_to :action => 'show'
@@ -16,6 +18,9 @@ class EmployeeController < ApplicationController
 
   def employee_params
       params.require(:employee).permit(:name, :email, :employeeid)
+  end
+  def owner_params
+      params.require(:employee).permit(:client, :process, :name)
   end
 
   def show
