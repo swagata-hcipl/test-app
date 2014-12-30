@@ -3,6 +3,7 @@ class Asset < ActiveRecord::Base
 	belongs_to :owner
 	has_one :vendor
 	has_one :purchase_order
+	has_paper_trail
 
 	#attr_accessor :scan_file_name, :scan_content_type
 

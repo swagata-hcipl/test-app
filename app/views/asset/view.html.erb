@@ -1,31 +1,46 @@
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-8 col-md-offset-2">
 <% @page_title = "test-app | Asset Profile" %>
 <h1>Asset Profile</h1>
-<p>
-	<strong>Name: </strong><%= @asset.name %></br>
-	<strong>Description: </strong><%= @asset.description %></br>
-	<strong>Type: </strong><%= @asset.types %></br>
-	<strong>Location: </strong><%= @asset.location %></br>
-	<strong>Owner: </strong><%= link_to @asset.owner_id,:controller => "owner", :action => "view", :id => @asset.owner_id -%><br/>
-	<strong>Employee: </strong><%= link_to @asset.employee_id,:controller => "employee", :action => "profile", :id => @asset.employee_id -%></br>
-	<strong>Status: </strong><%= @asset.status %></br>
-	<strong>Model No: </strong><%= @asset.model_no %></br>
-	<strong>Serial No: </strong><%= @asset.serial_no %></br>
-	<strong>MAC Address: </strong><%= @asset.mac_address %></br>
-	<strong>Purchase date: </strong><%= @asset.purchase_date %></br>
-	<strong>Purchase Order:</strong><%= image_tag @asset.scan %></br>
-	<strong>Image: </strong><%= image_tag @asset.image_url %></br>
-	<strong>Vendor: </strong><%= link_to @asset.vendor_id, :controller => "vendor", :action => "view", :id => @asset.vendor_id -%></br>
-	<strong>Cost: </strong><%= @asset.cost %></br>
-	<strong>AMC: </strong><%= @asset.amc %></br>
-	<strong>AMC Amount: </strong><%= @asset.amc_amount %></br>
-	<strong>Expiry Date: </strong><%= @asset.expiry_date %></br>
-	<strong>Warranty Type: </strong><%= @asset.warranty_type %></br>
-	<strong>IS Type: </strong><%= @asset.IS_type %></br>
-	<strong>Integrity: </strong><%= @asset.integrity %></br>
-	<strong>Confidentiality: </strong><%= @asset.confidentiality %></br>
-	<strong>Note: </strong><%= @asset.note %></br>
-	<strong>Active? </strong><%= @asset.is_active %></br>
-</p>
 
+	<table class= "table table-bordered">
+		<thead>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Name: </td>
+				<td><%= @asset.name %>
+				</td>
+			</tr>
+
+	<tr><td>Description: </td><td><%= @asset.description %></td></tr>
+	<tr><td>Type: </td><td><%= @asset.types %></td></tr>
+	<tr><td>Location: </td><td><%= @asset.location %></td></tr>
+	<tr><td>Owner: </td><td><%= link_to_if @asset.owner_id?, @asset.owner_id,:controller => "owner", :action => "view", :id => @asset.owner_id -%></td></tr>
+	<tr><td>Employee: </td><td><%=  link_to_if @asset.employee_id?, @asset.employee.name,:controller => "employee", :action => "profile", :id => @asset.employee_id -%></td></tr>
+	<tr><td>Status: </td><td><%= @asset.status %></td></tr>
+	<tr><td>Model No: </td><td><%= @asset.model_no %></td></tr>
+	<tr><td>Serial No: </td><td><%= @asset.serial_no %></td></tr>
+	<tr><td>MAC Address: </td><td><%= @asset.mac_address %></td></tr>
+	<tr><td>Purchase date: </td><td><%= @asset.purchase_date %></td></tr>
+	<tr><td>Purchase Order:</td><td><%= image_tag @asset.scan %></td></tr>
+	<tr><td>Image: </td><td><%= image_tag @asset.image_url %></td></tr>
+	<tr><td>Vendor: </td><td><%= link_to_if @asset.vendor_id?, @asset.vendor_id, :controller => "vendor", :action => "view", :id => @asset.vendor_id -%></td></tr>
+	<tr><td>Cost: </td><td><%= @asset.cost %></td></tr>
+	<tr><td>AMC: </td><td><%= @asset.amc %></td></tr>
+	<tr><td>AMC Amount: </td><td><%= @asset.amc_amount %></td></tr>
+	<tr><td>Expiry Date: </td><td><%= @asset.expiry_date %></td></tr>
+	<tr><td>Warranty Type: </td><td><%= @asset.warranty_type %></td></tr>
+	<tr><td>IS Type: </td><td><%= @asset.IS_type %></td></tr>
+	<tr><td>Integrity: </td><td><%= @asset.integrity %></td></tr>
+	<tr><td>Confidentiality: </td><td><%= @asset.confidentiality %></td></tr>
+	<tr><td>Note: </td><td><%= @asset.note %></td></tr>
+	<tr><td>Active? </td><td><%= @asset.is_active %></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 
 	

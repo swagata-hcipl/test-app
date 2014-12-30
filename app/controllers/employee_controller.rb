@@ -6,18 +6,28 @@ class EmployeeController < ApplicationController
 
   def create
 	  @employee = Employee.new(employee_params)
-    @owner = Owner.new(owner_params)
-	  if @employee.save&&@owner.save
-		  flash[:notice] = "New employee created"
-		  flash[:color]= "valid"
-		  redirect_to :action => 'show'
-	  else
-		  render "register"
+    if @employee.is_owner == true
+      @owner = Owner.new(owner_params)
+	    if @employee.save&&@owner.save
+		    flash[:notice] = "New employee & owner created"
+		    flash[:color]= "valid"
+		    redirect_to :action => 'show'
+	    else
+		    render "register"
+      end
+    else
+      if @employee.save
+        flash[:notice] = "New employee created"
+        flash[:color] = "valid"
+        redirect_to :action => 'show'
+      else
+        render "register"
+      end
     end
   end
 
   def employee_params
-      params.require(:employee).permit(:name, :email, :employeeid)
+      params.require(:employee).permit(:name, :email, :employeeid, :is_owner)
   end
   def owner_params
       params.require(:employee).permit(:client, :process, :name)

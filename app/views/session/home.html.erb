@@ -1,4 +1,4 @@
-	
+<div class="container">
   <h2 class='User_Header'> Welcome, <%= @current_user.try(:name)%> </h2>
 
 
@@ -43,7 +43,9 @@ Type: <%= f.select :types,  Asset::TYPE , :include_blank => true %>
       <td><%= image_tag asset.image_url %></td>
       <td><%= link_to_if asset.owner_id?, asset.owner_id,:controller => "owner", :action => "view", :id =>asset.owner_id -%></td>
       <td><%= asset.status %></td>
-      <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id}, :class => "btn btn-warning" %></td><td>
+      <td><%= link_to 'Edit', {:controller => 'asset', :action => 'edit', :id => asset.id}, :class => "btn btn-warning" %></td>
+      <td><%= link_to 'History', {:controller => 'asset', :action => 'history', :id => asset.id}, :class => "btn btn-primary" %></td>
+      <td>
       <%if asset.is_active?%>
         <%= link_to 'Deactivate', {:controller => 'asset', :action => 'deactivate', :id => asset.id}, :class => "btn btn-danger" %>
       <%else%>
@@ -61,7 +63,7 @@ Type: <%= f.select :types,  Asset::TYPE , :include_blank => true %>
   <%= link_to "Excel", session_home_path(format: "xls") %>
 </p>
 <%=will_paginate @assets %>
-
+</div>
 
 
 

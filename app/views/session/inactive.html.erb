@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_tag session_home_path, :method => 'get' do %>
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
@@ -24,7 +25,7 @@
   <tbody>
      <% if @assets!= nil %>
      <% @assets.each do |asset| %>
-     <% if asset.is_active == false %>
+     <% if asset.is_active != true %>
 <tr>
       <td><%= link_to asset.id,:controller => "asset", :action => "view", :id => asset.id -%></td>
       <td><%= asset.name %></td>
@@ -41,7 +42,7 @@
       <%end%></td>
     </tr>
     <% end %>
-    <%end%>
+    <% end %>
 
     <% end %>
   </tbody>  
@@ -52,4 +53,4 @@
   <%= link_to "Excel", session_home_path(format: "xls") %>
 </p>
 <%=will_paginate @assets %>
-
+</div>

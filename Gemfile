@@ -44,7 +44,7 @@ gem "iconv", "~> 1.0.3"
 gem 'will_paginate'
 
 gem "byebug"
-
+gem 'paper_trail', '~> 3.0.6'
 
 
 # Use unicorn as the app server

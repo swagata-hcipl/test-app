@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "show_vendor", :to => "vendor#show"
   get "show_owner", :to => "owner#show"
   get "show_employee", :to => "employee#show"
+  get "search", :to => "asset#search"
 
 
   get 'session/home'
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
 
   get 'asset/edit'
   post 'asset/update'
+
+  get 'asset/history'
 
   get 'user/new'
   post 'user/create'

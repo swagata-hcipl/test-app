@@ -77,8 +77,14 @@ before_filter :authenticate_user
   @assets = @assets.owner_id(params[:asset][:owner_id]) if params[:asset][:owner_id].present?
   @assets = @assets.types(params[:asset][:types]) if params[:asset][:types].present?
   @assets = @assets.employee_id(params[:asset][:employee_id]) if params[:asset][:employee_id].present?
-  render "search"
+  #render "search"
  end
+
+ def history
+  @asset = Asset.find(params[:id])
+  @versions = @asset.versions
+  #render "asset/history"
+end
 
   private
   def sort_column
